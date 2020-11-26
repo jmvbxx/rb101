@@ -1,0 +1,150 @@
+methods exercises:
+1.  def greeting(name)
+      puts "Hello, #{name}"
+    end
+
+    def greeting(name)
+      "Hello, " + name + ". How are you doing?"
+    end
+
+2.  irb(main):005:0> x = 2
+    => 2
+    irb(main):006:0> puts x = 2
+    2
+    => nil
+    irb(main):008:0> p name = "Joe"
+    "Joe"
+    => "Joe"
+    irb(main):009:0> four = "four"
+    => "four"
+    irb(main):010:0> print something = "nothing"
+    nothing=> nil
+
+3.  def multiply(a, b)
+      a * b
+    end
+
+three examples of single line conditional:
+1.  if x == 3 then puts "x is 3" end
+2.  puts "x is 3" if x == 3
+3.  puts "x is NOT 3" unless x == 3
+
+ternary operators:
+    irb :001 > true ? "this is true" : "this is not true"
+    => "this is true"
+
+    irb :001 > false ? "this is true" : "this is not true"
+    => "this is not true"
+
+- every expression evaluates to true when used in flow control except for false and nil
+
+arrays:
+- `pop` method removes the last element of an array
+- `push` method adds an element to the end of an array
+- the `<<` operator also adds an element to the end of an array
+- the `map` method iterates over an array applying a block to each element of the array
+  and returns a new array
+- `collect` does the same as `map`
+
+    irb :001 > a = [1, 2, 3, 4]
+    => [1, 2, 3, 4]
+    irb :002 > a.map { |num| num**2 }
+    => [1, 4, 9, 16]
+    irb :003 > a.collect { |num| num**2 }
+    => [1, 4, 9, 16]
+    irb :004 > a
+    => [1, 2, 3, 4]
+
+- `delete_at` eliminates the value at a certain index. it is destructive!
+- the `delete` method permanently deletes all instances of the provided value from the array
+- `uniq` iterates through an array, deletes any duplicate values that exist, then returns
+  a new array
+- `uniq!` is destructive!
+- `select` method iterates over an array and returns a new array that includes any items that
+  return 'true' to the expression provided (not destructive)
+
+  irb :001 > numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  irb :002 > numbers.select { |number| number > 4 }
+  => [5, 6, 7, 8, 9, 10]
+  irb :003 > numbers
+  => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+- `unshift` adds element to beginning of array
+- `include?` method checks to see if the argument given is included in the array
+- `flatten` method can be used to take an array that contains nested arrays and create a
+  one-dimensional array
+- `each_index` method represents the index number as opposed to the value at each index
+- `each_with_index`
+
+    irb: 001 > a = [1, 2, 3, 4, 5]
+    => [1, 2, 3, 4, 5]
+    irb: 002 > a.each_with_index { |val, idx| puts "#{idx+1}. #{val}" }
+    1. 1
+    2. 2
+    3. 3
+    4. 4
+    5. 5
+    => [1, 2, 3, 4, 5]
+
+- `sort` sorts the array
+
+each vs map
+- `each` is simple way to iterate over a collection
+- `each` runs the code in the block once for each element in the collection and returns the
+  collection it was invoked on
+
+  irb :001 > a = [1, 2, 3]
+  irb :002 > a.each { |e| puts e }
+  1
+  2
+  3
+  => [1, 2, 3]
+
+8. arr = [1, 2, 3, 4, 5]
+   new_arr = arr.map do |n|
+     n + 2
+   end
+
+   p arr
+   p new_arr
+
+hashes:
+- a `hash` is a data structure that stores items by associated keys
+
+    irb :003 > person = { height: '6 ft', weight: '160 lbs' }
+
+- add to an existing hash
+
+    irb :004 > person[:hair] = 'brown'
+    => "brown"
+    irb :005 > person
+    => {:height=>'6 ft', :weight=>'160 lbs', :hair=>'brown'}
+
+    irb :006> person[:age] = 62
+    => 62
+    irb :007> person
+    => {:height=>'6 ft', :weight=>'160 lbs', :hair=>'brown', :age=>62}
+
+- to delete
+
+    irb :008 > person.delete(:age)
+    => 62
+    irb :009 > person
+    => {:height=>'6 ft', :weight=>'160 lbs', :hair=>'brown'}
+
+- `merge!` method joins two hashes (it's destructive!). `merge` isn't destructive
+- iterate over hashes
+
+    person = {name: 'bob', height: '6 ft', weight: '160 lbs', hair: 'brown'}
+
+    person.each do |key, value|
+      puts "Bob's #{key} is #{value}"
+    end
+
+- `has_key?` method allows you to check if a hash contains a specific key. It returns a boolean
+  value
+- `select` method allows you to pass a block and will return any key-value pairs that evaluate
+  to true when ran through the block
+- `fetch` method allows you to pass a given key and it will return the value for that key if it
+  exists
