@@ -1,0 +1,3 @@
+truthiness:
+- usually notion of `true` or `false` is captured in a boolean
+- ruby considers everything to be truthy except for `false` and nil
